@@ -75,6 +75,7 @@ List<string> Verify(List<string> list)
     {
         Console.WriteLine("Verified Successfully!");
         flagMain = false;
+        return list;
     }
     else Console.WriteLine("Inputs are invalid!");
 }
@@ -117,29 +118,45 @@ List<string> NewSeries(List<string> list)
     return list;
 }
 
-void CurrentOrder(string[] list)
+void CurrentOrder(List<string> list)
 {
-
+    foreach (var item in list)
+    {
+        Console.Write(item + ",");
+    }
 }
 
-void ReverseOrder(string[] list)
+void ReverseOrder(List<string> list)
 {
-
+    for (int i = list.Count; list.Count > 0; i--)
+    {
+        Console.Write(list[i] + ",");
+    }
 }
 
-void SortedOrder(string[] list)
+void SortedOrder(List<string> list)
 {
-
+    
 }
 
-void SeriesMax(string[] list)
+int SeriesMax(List<string> list)
 {
-
+    int num = 0;
+    for (int i = 0; i < list.Count; i++)
+    {
+        if (int.Parse(list[i]) > num) num = int.Parse(list[i]);
+    }
+    return num;
 }
 
-void SeriesMin(string[] list)
+int SeriesMin(List<string> list)
 {
-
+    int num = int.Parse(list[0]);
+    for (int i = 0; i < list.Count; i++)
+    {
+        if (int.Parse(list[i]) < num) num = int.Parse(list[i]);
+    }
+    return num;
 }
 
 void SeriesAverage(string[] list)
