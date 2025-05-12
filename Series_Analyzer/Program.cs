@@ -109,7 +109,32 @@ namespace Project
                             string num = Console.ReadLine();
                             list.Add(num);
                         }
-                        flag = false;
+
+                        bool innerflag = true;
+
+                        while (innerflag == true)
+                        {
+                        Console.WriteLine("1) Add More:\n2) Stop:");
+                        int option = int.Parse(Console.ReadLine());
+
+                        switch (option)
+                        {
+                            case 1 when option == 1:
+                                Console.WriteLine("Please insert your number:");
+                                string num = Console.ReadLine();
+                                list.Add(num);
+                                break;
+
+                            case 2 when option == 2:
+                                innerflag = false;
+                                break;
+
+                            default:
+                                Console.WriteLine("Invalid Input!");
+                                break; 
+                            }
+                        
+                        }
                         break;
 
                     case 2:
