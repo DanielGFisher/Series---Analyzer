@@ -17,58 +17,61 @@ namespace Project
                 Console.WriteLine("--- Welcome to our Analyzer! ---");
                 Verify(list);
                 Menu(NewSeries(list));
-                
+
             }
         }
 
         public static void Menu(List<string> list)
         {
-
-            Console.WriteLine("--- Menu ---");
-            Console.WriteLine("1) Insert New Series:\n2) Display Current Order:\n3) Display Reversed Order:\n4) Display Sorted Order:\n5) Display Largest Series Value:\n6) Display Lowest Series Value:\n7) Display Series Average:\n8) Display Series Sum:\n9) Exit Program:");
-            Console.WriteLine("Please Insert Choice by number:");
-            int choice = int.Parse(Console.ReadLine());
-
-            switch (choice)
+            while (flagMenu == true) 
             {
-                case 1 when choice == 1:
-                    NewSeries(list);
-                    break;
+                Console.WriteLine("--- Menu ---");
+                Console.WriteLine("1) Insert New Series:\n2) Display Current Order:\n3) Display Reversed Order:\n4) Display Sorted Order:\n5) Display Largest Series Value:\n6) Display Lowest Series Value:\n7) Display Series Average:\n8) Display Series Sum:\n9) Exit Program:");
+                Console.WriteLine("Please Insert Choice by number:");
+                int choice = int.Parse(Console.ReadLine());
 
-                case 2 when choice == 2:
-                    CurrentOrder(list);
-                    break;
+                switch (choice)
+                {
+                    case 1 when choice == 1:
+                        NewSeries(list);
+                        break;
 
-                case 3 when choice == 3:
-                    ReverseOrder(list);
-                    break;
+                    case 2 when choice == 2:
+                        CurrentOrder(list);
+                        break;
 
-                case 4 when choice == 4:
-                    SortedOrder(list);
-                    break;
+                    case 3 when choice == 3:
+                        ReverseOrder(list);
+                        break;
 
-                case 5 when choice == 5:
-                    Console.WriteLine(SeriesMax(list));
-                    break;
+                    case 4 when choice == 4:
+                        SortedOrder(list);
+                        break;
 
-                case 6 when choice == 6:
-                    Console.WriteLine(SeriesMin(list));
-                    break;
+                    case 5 when choice == 5:
+                        Console.WriteLine("Maximum:" + SeriesMax(list));
+                        break;
 
-                case 7 when choice == 7:
-                    SeriesAverage(list);
-                    break;
+                    case 6 when choice == 6:
+                        Console.WriteLine("Minimum:" + SeriesMin(list));
+                        break;
 
-                case 8 when choice == 8:
-                    Console.WriteLine(SeriesSum(list));
-                    break;
+                    case 7 when choice == 7:
+                        SeriesAverage(list);
+                        break;
 
-                case 9 when choice == 9:
-                    ExitProgram();
-                    break;
+                    case 8 when choice == 8:
+                        Console.WriteLine("Sum:" + SeriesSum(list));
+                        break;
+
+                    case 9 when choice == 9:
+                        ExitProgram();
+                        break;
+                }
+
             }
-
         }
+            
 
         public static void Verify(List<string> list)
         {
@@ -130,7 +133,7 @@ namespace Project
         {
             for (int i = 0; i < list.Count; i++)
             {
-                if (i == list.Count - 1) Console.Write(list[i]);
+                if (i == list.Count - 1) Console.WriteLine(list[i]);
                 else Console.Write(list[i] + ",");
             }
         }
@@ -140,7 +143,7 @@ namespace Project
         {
             for (int i = list.Count - 1; i >= 0; i--)
             {
-                if (i == 0) Console.Write(list[i]);
+                if (i == 0) Console.WriteLine(list[i]);
                 else Console.Write(list[i] + ",");
             }
         }
@@ -162,12 +165,12 @@ namespace Project
                     }
                 if (inserted == false) sortedList.Add(num);
             }
-                for (int i = 0; i < sortedList.Count; i++)
-                {
-                    if (i == sortedList.Count - 1) Console.Write(sortedList[i]);
-                    else Console.Write(sortedList[i] + ",");
-                }
+            for (int i = 0; i < sortedList.Count; i++)
+            {
+                if (i == sortedList.Count - 1) Console.WriteLine(sortedList[i]);
+                else Console.Write(sortedList[i] + ",");
             }
+        }
 
         public static int SeriesMax(List<string> list)
         {
@@ -206,12 +209,8 @@ namespace Project
         }
 
         public static void ExitProgram()
-            {
-                flagMenu = false;
-            }
+        {
+            flagMenu = false;
         }
     }
-
-
-    
-
+}
