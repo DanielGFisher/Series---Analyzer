@@ -91,11 +91,7 @@ namespace Project
 
         public static List<string> NewSeries(List<string> list)
         {
-            foreach (var item in list)
-            {
-                list.Remove(item);
-            }
-
+            list.Clear();
             bool flag = true;
             while (flag == true)
             {
