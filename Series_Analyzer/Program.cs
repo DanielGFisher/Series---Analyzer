@@ -147,8 +147,27 @@ namespace Project
 
         public static void SortedOrder(List<string> list)
         {
+            List<int> sortedList = new List<int> { };
+            for (int i = 0; i < list.Count; i++)
+            {
+                int num = int.Parse(list[i]);
+                bool inserted = false;
 
-        }
+                for (int j = 0; j < sortedList.Count; j++)
+                    if (num < sortedList[j])
+                    {
+                        sortedList.Insert(j, num);
+                        inserted = true;
+                        break;
+                    }
+                if (inserted == false) sortedList.Add(num);
+            }
+                for (int i = 0; i < sortedList.Count; i++)
+                {
+                    if (i == sortedList.Count - 1) Console.Write(sortedList[i]);
+                    else Console.Write(sortedList[i] + ",");
+                }
+            }
 
         public static int SeriesMax(List<string> list)
         {
