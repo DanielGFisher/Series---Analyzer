@@ -15,8 +15,7 @@ namespace Project
             while (flagMain == true)
             {
                 Console.WriteLine("--- Welcome to our Analyzer! ---");
-                Verify(list);
-                Menu(NewSeries(list));
+                Menu(Validate(NewSeries(list)));
 
             }
         }
@@ -73,20 +72,22 @@ namespace Project
         }
             
 
-        public static void Verify(List<string> list)
+        public static List<string> Validate(List<string> list)
         {
             int count = 0;
 
             for (int i = 0; i < list.Count; i++)
             {
-                if (int.Parse(list[i]) > 0) count += 1;
+                if (int.TryParse(list[i], out int value) && value > 0) count += 1;
             }
             if (count >= 3)
             {
                 Console.WriteLine("Verified Successfully!");
                 flagMain = false;
+                return list;
             }
             else Console.WriteLine("Inputs are invalid!");
+            return NewSeries(list);
         }
 
         public static List<string> NewSeries(List<string> list)

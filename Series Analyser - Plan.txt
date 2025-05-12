@@ -1,0 +1,34 @@
+Implement:
+Numbers Validation and Series Setting;
+1) Working Series (List) 
+	1.1) Check Implementation (if-else)
+	1.2) External Argument Validation (if-else)
+	1.3) Implement User Input option
+
+Using:
+Main() - Calls on Validate() to check the number series and starts Menu() when complete.
+
+Validate() - Checks for three positive numbers in a list
+
+Build Menu;
+2) Choices Available to be printed;
+	2.1) Input a new series - replaces current series and 	validates again
+	2.2) Display the order it is already in (loop)
+	2.3) Display in reversed order (loop)
+	2.4) Display sorted order (use Sorted [later sort by your 	own function])
+	2.5) Find the max 
+	2.6) Find the min
+	2.7) Find the average
+	2.8) Find the Count
+	2.9) Display the sum
+	2.10) Exit program
+Using:
+NewSeries() - Starts collecting new numbers and adds them to the list, then replaces the old list with the new one
+CurrentOrder() - Loops through the List and prints by order
+ReverseOrder() - Loops through the List from the end to the start and prints vals
+SortedOrder() - Displays the List in the correct order, offers from high to low or from low to high in a sub-menu
+SeriesMax() - Displays the highest value Looping though and saving the highest in a separate variable
+SeriesMin() - Displays the lowest value Looping through and saving the lowest in a separate variable
+SeriesAverage() - Displays the series average by using SeriesSum() and SeriesCount() 
+SeriesSum() - Loops through the variables and adds them up
+ExitProgram() - Exits the program by changing bool of flag
