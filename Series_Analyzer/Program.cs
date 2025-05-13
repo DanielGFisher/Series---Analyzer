@@ -91,8 +91,7 @@ namespace Project
         }
 
         public static List<string> NewSeries(List<string> list)
-        {
-            list.Clear();
+        { 
             bool flag = true;
             while (flag == true)
             {
@@ -108,7 +107,8 @@ namespace Project
                     switch (choice)
                     {
                         case 1:
-                            for (int i = 0; i < 3; i++)
+                        list.Clear();
+                        for (int i = 0; i < 3; i++)
                             {
                                 Console.WriteLine("Please insert your number:");
                                 string num = Console.ReadLine();
