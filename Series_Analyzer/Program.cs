@@ -22,7 +22,7 @@ namespace Project
 
         public static void Menu(List<string> list)
         {
-            while (flagMenu == true) 
+            while (flagMenu == true)
             {
                 Console.WriteLine("--- Menu ---");
                 Console.WriteLine("1) Insert New Series:\n2) Display Current Order:\n3) Display Reversed Order:\n4) Display Sorted Order:\n5) Display Largest Series Value:\n6) Display Lowest Series Value:\n7) Display Series Average:\n8) Display Series Sum:\n9) Exit Program:");
@@ -70,7 +70,7 @@ namespace Project
 
             }
         }
-            
+
 
         public static List<string> Validate(List<string> list)
         {
@@ -99,53 +99,73 @@ namespace Project
                 Console.WriteLine("--- New Series ---");
                 Console.WriteLine("1) Add New Numbers:\n2) Exit:");
                 Console.WriteLine("Insert a choice by number:");
-                int choice = int.Parse(Console.ReadLine());
+                string initialchoice = Console.ReadLine();
+                int choice = 0;
 
-                switch (choice)
-                {
-                    case 1:
-                        for (int i = 0; i < 3; i++)
-                        {
-                            Console.WriteLine("Please insert your number:");
-                            string num = Console.ReadLine();
-                            list.Add(num);
-                        }
+                if (int.TryParse(initialchoice, out int number)) choice = number;
+                else Console.WriteLine("Invalid Input");
 
-                        bool innerflag = true;
-
-                        while (innerflag == true)
-                        {
-                        Console.WriteLine("1) Add More:\n2) Stop:");
-                        int option = int.Parse(Console.ReadLine());
-
-                        switch (option)
-                        {
-                            case 1 when option == 1:
+                    switch (choice)
+                    {
+                        case 1:
+                            for (int i = 0; i < 3; i++)
+                            {
                                 Console.WriteLine("Please insert your number:");
                                 string num = Console.ReadLine();
                                 list.Add(num);
-                                break;
-
-                            case 2 when option == 2:
-                                innerflag = false;
-                                break;
-
-                            default:
-                                Console.WriteLine("Invalid Input!");
-                                break; 
                             }
-                        
-                        }
-                        break;
 
-                    case 2:
-                        flag = false;
-                        break;
+                            bool innerflag = true;
 
-                    default:
-                        Console.WriteLine("Invalid Input!");
-                        break;
-                }
+                            while (innerflag == true)
+                            {
+                            Console.WriteLine("1) Add More:\n2) Stop:");
+                            string input = Console.ReadLine();
+                            int  option = 0;
+
+                            if (int.TryParse(input, out int result)) option = result;
+                            else Console.WriteLine("Invalid input!");
+                                switch (option)
+                                {
+                                    case 1 when option == 1:
+                                    bool insideFlag = true;
+
+                                    while (insideFlag == true)
+                                    {
+                                      Console.WriteLine("Please insert your number:");
+                                        string num = Console.ReadLine();
+                                        if (int.TryParse(num, out int int32))
+                                        {
+                                            list.Add(num);
+                                            insideFlag = false;
+                                        }
+                                        else Console.WriteLine("Invalid input");
+                                     }
+                                    break;    
+                                     
+                                    
+
+                                    case 2 when option == 2:
+                                        innerflag = false;
+                                        break;
+
+                                    default:
+                                        Console.WriteLine("Invalid Input!");
+                                        break;
+                                }
+
+                            }
+                            flag = false;
+                            break;
+
+                        case 2:
+                            flag = false;
+                            break;
+
+                        default:
+                            Console.WriteLine("Invalid Input!");
+                            break;
+                    }
             }
             flagMain = false;
             return list;
