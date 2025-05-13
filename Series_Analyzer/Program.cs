@@ -4,9 +4,10 @@ using System.ComponentModel.Design;
 namespace Project
 {
     public class Functions
-    {
+    {   // Flags for Main and Menu while loops
         static bool flagMain = true;
         static bool flagMenu = true;
+        // Program starter function
         public static void Main(string[] args)
         {
             List<string> list = args.ToList<string>();
@@ -18,12 +19,16 @@ namespace Project
 
             }
         }
+
+        // Displays Menu and calls function based on user input
         public static void Menu(List<string> list)
         {
             while (flagMenu == true)
             {
                 Console.WriteLine("--- Menu ---");
-                Console.WriteLine("1) Insert New Series:\n2) Display Current Order:\n3) Display Reversed Order:\n4) Display Sorted Order:\n5) Display Largest Series Value:\n6) Display Lowest Series Value:\n7) Display Series Average:\n8) Display Series Sum:\n9) Exit Program:");
+                Console.WriteLine("1) Insert New Series:\n2) Display Current Order:\n3) Display Reversed Order:\n" +
+                    "4) Display Sorted Order:\n5) Display Largest Series Value:\n6) Display Lowest Series Value:\n" +
+                    "7) Display Series Average:\n8) Display Series Sum:\n9) Add to list:\n10) Exit Program:");
                 Console.WriteLine("Please Insert Choice by number:");
                 int choice = int.Parse(Console.ReadLine());
 
@@ -62,6 +67,10 @@ namespace Project
                         break;
 
                     case 9 when choice == 9:
+                        AddNumber(list);
+                        break;
+
+                    case 10 when choice == 10:
                         ExitProgram();
                         break;
                 }
@@ -69,7 +78,7 @@ namespace Project
             }
         }
 
-
+        // Validates the initial input list
         public static List<string> Validate(List<string> list)
         {
             int count = 0;
@@ -88,6 +97,7 @@ namespace Project
             return NewSeries(list);
         }
 
+        // Creates a new list
         public static List<string> NewSeries(List<string> list)
         { 
             bool flag = true;
@@ -129,6 +139,7 @@ namespace Project
             return list;
         }
 
+        // Allows to add more to the list
         public static void AddNumber(List<string> list)
         {
             bool innerflag = true;
@@ -160,7 +171,7 @@ namespace Project
                         break;
 
 
-
+                    
                     case 2 when option == 2:
                         innerflag = false;
                         break;
@@ -171,6 +182,7 @@ namespace Project
                 }
             } 
         }
+        // Displays current list order
         public static void CurrentOrder(List<string> list)
         {
             for (int i = 0; i < list.Count; i++)
@@ -180,7 +192,7 @@ namespace Project
             }
         }
 
-
+        // Displays current list in reverse 
         public static void ReverseOrder(List<string> list)
         {
             for (int i = list.Count - 1; i >= 0; i--)
@@ -190,6 +202,7 @@ namespace Project
             }
         }
 
+        // Displays the sorted order of the list
         public static void SortedOrder(List<string> list)
         {
             List<int> sortedList = new List<int> { };
@@ -214,6 +227,7 @@ namespace Project
             }
         }
 
+        // Returns highest variable in list
         public static int SeriesMax(List<string> list)
         {
             int num = 0;
@@ -224,6 +238,7 @@ namespace Project
             return num;
         }
 
+        // Returns lowest variable in list
         public static int SeriesMin(List<string> list)
         {
             int num = int.Parse(list[0]);
@@ -234,12 +249,14 @@ namespace Project
             return num;
         }
 
+        // Displays average of combined list variables
         public static void SeriesAverage(List<string> list)
         {
             double average = SeriesSum(list) / list.Count;
             Console.WriteLine("Average:" + average);
         }
 
+        // Returns list sum
         public static int SeriesSum(List<string> list)
         {
             int sum = 0;
@@ -250,6 +267,7 @@ namespace Project
             return sum;
         }
 
+        // Exits the Program
         public static void ExitProgram()
         {
             flagMenu = false;
